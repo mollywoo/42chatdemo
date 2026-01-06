@@ -491,7 +491,7 @@ export default function ChatHomePage() {
           <div className="max-w-3xl mx-auto">
             <ChatInput
               onSend={handleSendFromInput}
-              disabled={isLoading || !conversation?.id || modelConfigs.length === 0}
+              disabled={isLoading || modelConfigs.length === 0}
               placeholder={
                 modelConfigs.length === 0
                   ? "请先在设置中添加 API Key"
