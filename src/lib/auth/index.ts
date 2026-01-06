@@ -19,9 +19,23 @@ export const auth = betterAuth({
   session: {
     expiresIn: 60 * 60 * 24 * 30, // 30 days
     updateAge: 60 * 60 * 24, // 1 day
+    cookieCache: {
+      enabled: true,
+      maxAge: 5 * 60, // 5 minutes
+    },
   },
   baseURL: process.env.BETTER_AUTH_URL || "http://localhost:3000",
   basePath: "/api/auth",
+  advanced: {
+    cookiePrefix: "better-auth",
+    crossSubDomainCookies: {
+      enabled: false,
+    },
+  },
+  // Disable origin check for same-origin deployments
+  allowedOrigins: process.env.NODE_ENV === "production"
+    ? [process.env.BETTER_AUTH_URL || ""]
+    : true, // Allow all origins in development
 });
 
 export type Session = typeof auth.$Infer.Session;
