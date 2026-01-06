@@ -1,0 +1,31 @@
+{
+  "permissions": {
+    "allow": [
+      "mcp__plugin_neon-plugin_neon__run_sql",
+      "Skill(neon-plugin:neon-drizzle)",
+      "Bash(~/.bun/bin/bun run:*)",
+      "mcp__plugin_neon-plugin_neon__get_database_tables",
+      "mcp__plugin_neon-plugin_neon__describe_table_schema",
+      "Bash(~/.bun/bin/bun add:*)",
+      "Bash(~/.bun/bin/bun remove:*)",
+      "Bash(~/.bun/bin/bun pm ls:*)",
+      "Bash(~/.bun/bin/bun install:*)",
+      "Bash(curl:*)",
+      "mcp__plugin_neon-plugin_neon__run_sql_transaction",
+      "Bash(lsof:*)",
+      "Bash(kill:*)",
+      "Bash(npm run dev)",
+      "Bash(npm install:*)",
+      "Bash(cat:*)",
+      "Bash(xargs:*)",
+      "Bash(npm info:*)",
+      "Bash(npm search:*)",
+      "Bash(npm run db:generate:*)",
+      "Bash(npm run db:migrate:*)",
+      "Bash(npm run db:push:*)",
+      "Bash(ps:*)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

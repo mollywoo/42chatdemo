@@ -1,0 +1,27 @@
+{
+  "version": "7",
+  "dialect": "postgresql",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "7",
+      "when": 1767368454309,
+      "tag": "0000_conscious_ma_gnuci",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1767375857731,
+      "tag": "0001_sweet_preak",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1767376195362,
+      "tag": "0002_same_warbird",
+      "breakpoints": true
+    }
+  ]
+}

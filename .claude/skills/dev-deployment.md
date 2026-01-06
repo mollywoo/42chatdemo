@@ -1,0 +1,1 @@
+/Users/imolly/2025AIPD/project-template-student-db/.42plugin/42edu/dev-deployment-v1/SKILL.zh.md

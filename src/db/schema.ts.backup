@@ -1,0 +1,31 @@
+import {
+  pgTable,
+  serial,
+  text,
+  timestamp,
+  varchar,
+  boolean,
+} from 'drizzle-orm/pg-core';
+
+// 用户表
+export const users = pgTable('users', {
+  id: serial('id').primaryKey(),
+  email: varchar('email', { length: 255 }).notNull().unique(),
+  name: varchar('name', { length: 255 }).notNull(),
+  createdAt: timestamp('created_at').defaultNow(),
+  updatedAt: timestamp('updated_at').defaultNow(),
+});
+
+// 学生表 (示例)
+export const students = pgTable('students', {
+  id: serial('id').primaryKey(),
+  userId: serial('user_id')
+    .notNull()
+    .references(() => users.id),
+  studentId: varchar('student_id', { length: 50 }).notNull().unique(),
+  major: varchar('major', { length: 100 }),
+  enrollmentYear: varchar('enrollment_year', { length: 4 }),
+  isActive: boolean('is_active').default(true),
+  createdAt: timestamp('created_at').defaultNow(),
+  updatedAt: timestamp('updated_at').defaultNow(),
+});
