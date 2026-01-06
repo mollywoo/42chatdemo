@@ -155,7 +155,14 @@ export default function ChatHomePage() {
 
   // Handle model switch - update conversation in backend
   const handleModelChange = useCallback(async (model: ModelConfig) => {
-    if (!conversation?.id) return;
+    // If no conversation exists, just set the selected model
+    // It will be used when creating a new conversation
+    if (!conversation?.id) {
+      setSelectedModel(model);
+      setModelSwitchMessage(`已选择 ${model.name || model.modelId}，发送消息后生效`);
+      setTimeout(() => setModelSwitchMessage(null), 3000);
+      return;
+    }
 
     try {
       const res = await fetch(`/api/conversations/${conversation.id}`, {
