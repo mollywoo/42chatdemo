@@ -92,6 +92,7 @@ export default function ChatHomePage() {
           modelId: defaultModelId,
         }),
       });
+
       if (res.ok) {
         const data = await res.json();
         setConversation(data);
@@ -104,9 +105,15 @@ export default function ChatHomePage() {
         } else if (modelConfigs.length > 0) {
           setSelectedModel(modelConfigs[0]);
         }
+      } else {
+        // Parse error response
+        const errorData = await res.json().catch(() => ({ error: "Unknown error" }));
+        console.error("Failed to create conversation:", errorData);
+        alert(`创建对话失败: ${errorData.error || "未知错误"}`);
       }
     } catch (error) {
       console.error("Failed to create conversation:", error);
+      alert(`创建对话失败: ${error instanceof Error ? error.message : "网络错误"}`);
     }
   };
 

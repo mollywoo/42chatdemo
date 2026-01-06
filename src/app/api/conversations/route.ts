@@ -108,6 +108,12 @@ export async function POST(request: NextRequest) {
     const body = await request.json();
     const { title, modelId } = body;
 
+    console.log("[DEBUG] Creating conversation:", {
+      userId: session.user.id,
+      title,
+      modelId,
+    });
+
     const newConversation = await db
       .insert(conversations)
       .values({
@@ -117,11 +123,16 @@ export async function POST(request: NextRequest) {
       })
       .returning();
 
+    console.log("[DEBUG] Conversation created successfully:", newConversation[0]);
+
     return NextResponse.json(newConversation[0], { status: 201 });
   } catch (error) {
     console.error("Error creating conversation:", error);
     return NextResponse.json(
-      { error: "Failed to create conversation" },
+      {
+        error: "Failed to create conversation",
+        details: error instanceof Error ? error.message : String(error),
+      },
       { status: 500 },
     );
   }
